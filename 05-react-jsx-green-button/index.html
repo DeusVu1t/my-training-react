@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React JSX green button</title>
-    <style>
-        .app {
-            text-align: center;
-        }
-
-        .green-btn {
-            color: #fff;
-            background-color: green;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проверка на палиндром</title>
 </head>
-
 <body>
-    <div id="app"></div>
-    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js" crossorigin></script>
+  <h2>Проверка на палиндром</h2>
 
-    <script src="script.js" type="text/babel"></script>
+  <label for="inputString">Введите строку: </label>
+  <input type="text" id="inputString">
+  <button onclick="checkPalindrome()">Проверить</button>
+
+  <p id="result"></p>
+
+  <script>
+    function checkPalindrome() {
+      // Получаем значение из инпута
+      const inputString = document.getElementById("inputString").value.toLowerCase(); // Преобразуем строку в нижний регистр
+
+      // Разбиваем строку на массив символов
+      const characters = inputString.split('');
+
+      // Проверка на палиндром
+      let isPalindrome = true;
+      for (let i = 0; i < Math.floor(characters.length / 2); i++) {
+        if (characters[i] !== characters[characters.length - 1 - i]) {
+          isPalindrome = false;
+          break;
+        }
+      }
+
+      // Выводим результат
+      const resultElement = document.getElementById("result");
+      resultElement.innerText = isPalindrome ? "Это палиндром!" : "Это не палиндром.";
+    }
+  </script>
 </body>
-
-
 </html>
