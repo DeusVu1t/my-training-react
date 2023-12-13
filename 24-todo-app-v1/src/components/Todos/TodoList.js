@@ -1,11 +1,7 @@
-function TodoList(props) {
-    const { todo } = props;
-    
-    return (
-        <div className="todolist">
-            <p>Значение todo: {todo}</p>
-        </div>
-    );
+import Todo from "./Todo";
+
+function TodoList({ todos }) {
+  return todos.map((todo, index) => <Todo key={index} todo={todo} />);
 }
 
 export default TodoList;

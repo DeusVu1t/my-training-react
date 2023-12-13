@@ -1,38 +1,19 @@
-import { useState } from "react";
-import TodoList from "./TodoList";
-
 function TodoForm() {
-    const [data, setTodo] = useState({ todo: '' });
 
-    function handleFormSubmit(event) {
-        event.preventDefault();
-        const { todo } = data;
-        console.log(data);
+  return (
+    <div>
+      <form>
+        <input
+         placeholder="Enter new todo"
+        />
+        <button type="submit">
+          Submit
+        </button>
+      </form>
 
-        setTodo({ ...data, todo: '' });
-    }
-
-    function handleInputChange(event, todo) {
-        setTodo({ ...data, [todo]: event.target.value });
-    }
-
-    return (
-        <div>
-            <form onSubmit={handleFormSubmit}>
-                <input
-                    className="todo-input"
-                    type="text"
-                    value={data.todo}
-                    onChange={(event) => handleInputChange(event, 'todo')}
-                />
-                <button type="submit" className="submit-btn">
-                    Submit
-                </button>
-            </form>
-            {/* Передача только свойства todo */}
-            <TodoList todo={data.todo} />
-        </div>
-    );
+     
+    </div>
+  );
 }
 
 export default TodoForm;
